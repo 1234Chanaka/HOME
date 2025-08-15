@@ -103,15 +103,34 @@
   <div id="dashboard" style="display: none;">
     <h2>MY HOME</h2>
     <div class="relay-grid">
-      <div class="relay-card"><h2>Bathroom</h2><p>Status: <span id="status-bathroom">...</span></p><button id="btn-bathroom">Toggle</button></div>
-      <div class="relay-card"><h2>Bedroom</h2><p>Status: <span id="status-bedroom">...</span></p><button id="btn-bedroom">Toggle</button></div>
-      <div class="relay-card"><h2>Front</h2><p>Status: <span id="status-front">...</span></p><button id="btn-front">Toggle</button></div>
-      <div class="relay-card"><h2>Garage</h2><p>Status: <span id="status-garage">...</span></p><button id="btn-garage">Toggle</button></div>
-      <div class="relay-card"><h2>Kitchen</h2><p>Status: <span id="status-kitchen">...</span></p><button id="btn-kitchen">Toggle</button></div>
-      <div class="relay-card"><h2>Living Room</h2><p>Status: <span id="status-livingroom">...</span></p><button id="btn-livingroom">Toggle</button></div>
-      <div class="relay-card"><h2>Passage</h2><p>Status: <span id="status-passage">...</span></p><button id="btn-passage">Toggle</button></div>
-      <div class="relay-card"><h2>Staircase</h2><p>Status: <span id="status-staircase">...</span></p><button id="btn-staircase">Toggle</button></div>
+      <!-- Dashboard -->
+  <div id="dashboard">
+    <div class="relay-container">
+      <div class="relay-card">
+        <h2>Bathroom</h2>
+        <p>Status: <span id="status1">Loading...</span></p>
+        <button id="btn1">Toggle</button>
+      </div>
+
+      <div class="relay-card">
+        <h2>Bedroom</h2>
+        <p>Status: <span id="status2">Loading...</span></p>
+        <button id="btn2">Toggle</button>
+      </div>
+
+      <div class="relay-card">
+        <h2>Kitchen</h2>
+        <p>Status: <span id="status3">Loading...</span></p>
+        <button id="btn3">Toggle</button>
+      </div>
+
+      <div class="relay-card">
+        <h2>Livingroom</h2>
+        <p>Status: <span id="status4">Loading...</span></p>
+        <button id="btn4">Toggle</button>
+      </div>
     </div>
+
 
     <button id="allOffBtn">All OFF</button>
     <button id="logoutBtn">Logout</button>
@@ -129,13 +148,13 @@
   <script>
     // Replace with your Firebase config
     const firebaseConfig = {
-     apiKey: "AIzaSyChwclbJEi1Q5trKl1iGTRw2c0jpNGPPJ4",
-  authDomain: "home-7d370.firebaseapp.com",
-  databaseURL: "https://home-7d370-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "home-7d370",
-  storageBucket: "home-7d370.firebasestorage.app",
-  messagingSenderId: "730950128373",
-  appId: "1:730950128373:web:be70e41c305535eaea6bbc"
+   apiKey: "AIzaSyAZx7n9xTtYiR7oSt3Um7m5cyS9KN6ndmU",
+  authDomain: "home-02-44549.firebaseapp.com",
+  databaseURL: "https://home-02-44549-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "home-02-44549",
+  storageBucket: "home-02-44549.firebasestorage.app",
+  messagingSenderId: "41713508904",
+  appId: "1:41713508904:web:97e02a7cd5d6b556678b1d"
 };
     firebase.initializeApp(firebaseConfig);
 
@@ -170,13 +189,14 @@
       }
     });
 
-    function startRelayControl() {
+    function startRelayControl() 
       const db = firebase.database();
       const relays = [
-        "bathroom", "bedroom", "front", "garage",
-        "kitchen", "livingroom", "passage", "staircase"
-      ];
-
+        { id: 1, path: "Bathroom" },
+        { id: 2, path: "Bedroom" },
+        { id: 3, path: "Kitchen" },
+        { id: 4, path: "Livingroom" },
+        }
       relays.forEach(id => {
         const statusText = document.getElementById(`status-${id}`);
         const toggleButton = document.getElementById(`btn-${id}`);
@@ -217,4 +237,5 @@
   </script>
 </body>
 </html>
+
 
